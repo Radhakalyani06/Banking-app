@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Login</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#ff7a18,#ffb347);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:10px;
+width:300px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+text-align:center;
+color:#ff6f00;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:15px;
+background:#ff6f00;
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+button:hover{
+background:#e65c00;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>Bank Login</h2>
+
+<form action="/login" method="post">
+	
+	<p style="color:red;" th:text="${msg}"></p>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<button type="submit">Login</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

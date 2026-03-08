@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Register</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:linear-gradient(135deg,#ff7a18,#ffb347);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+background:white;
+padding:40px;
+border-radius:10px;
+width:320px;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+h2{
+text-align:center;
+color:#ff6f00;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:5px;
+}
+
+button{
+width:100%;
+padding:10px;
+margin-top:15px;
+background:#ff6f00;
+color:white;
+border:none;
+border-radius:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>User Registration</h2>
+
+<form action="/register" method="post">
+
+<input type="text" name="name" placeholder="Name" required>
+
+<input type="email" name="email" placeholder="Email" required>
+
+<input type="password" name="password" placeholder="Password" required>
+
+<input type="number" name="pin" placeholder="PIN" required>
+
+<button type="submit">Register</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>User Dashboard</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#f4f6f9;
+}
+
+/* Top Navbar */
+
+.navbar{
+    background:#f58220;
+    color:white;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.navbar h2{
+    margin:0;
+}
+
+.logout-btn{
+    background:white;
+    color:#f58220;
+    border:none;
+    padding:8px 16px;
+    border-radius:5px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.logout-btn:hover{
+    background:#ffe2c4;
+}
+
+/* Dashboard Container */
+
+.container{
+    padding:40px;
+}
+
+/* Welcome */
+
+.welcome{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 3px 10px rgba(0,0,0,0.1);
+    margin-bottom:30px;
+}
+
+.welcome h2{
+    margin:0;
+}
+
+/* Cards */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:25px;
+}
+
+.card{
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+/* Icons */
+
+.icon{
+    font-size:40px;
+    margin-bottom:10px;
+}
+
+/* Buttons */
+
+.btn{
+    margin-top:15px;
+    padding:10px 20px;
+    border:none;
+    background:#f58220;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.btn:hover{
+    background:#d96e14;
+}
+
+.balance-card{
+    background:linear-gradient(135deg,#f58220,#ff9a3c);
+    color:white;
+}
+
+.balance-card h3{
+    margin:0;
+}
+
+.balance-card p{
+    font-size:26px;
+    margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="navbar">
+    <h2>MyBank Dashboard</h2>
+
+    <form th:action="@{/logout}" method="get">
+        <button class="logout-btn">Logout</button>
+    </form>
+</div>
+
+<div class="container">
+
+    <!-- Welcome -->
+
+    <div class="welcome">
+        <h2>Welcome, <span th:text="${user.name}"></span> 👋</h2>
+        <p>Manage your banking operations easily.</p>
+    </div>
+
+    <!-- Balance -->
+
+    <div class="cards">
+
+        <div class="card balance-card">
+            <div class="icon">💰</div>
+            <h3>Account Balance</h3>
+            <p>₹ <span th:text="${user.balance}"></span></p>
+        </div>
+
+        <!-- Deposit -->
+
+        <div class="card">
+            <div class="icon">⬇️</div>
+            <h3>Deposit</h3>
+
+            <form th:action="@{/depositPage}" method="get">
+                <button class="btn">Deposit Money</button>
+            </form>
+        </div>
+
+        <!-- Withdraw -->
+
+        <div class="card">
+            <div class="icon">⬆️</div>
+            <h3>Withdraw</h3>
+
+            <form th:action="@{/withdrawPage}" method="get">
+                <button class="btn">Withdraw Money</button>
+            </form>
+        </div>
+
+        <!-- Transfer -->
+
+        <div class="card">
+            <div class="icon">🔁</div>
+            <h3>Transfer</h3>
+
+            <form th:action="@{/transferPage}" method="get">
+                <button class="btn">Transfer Money</button>
+            </form>
+        </div>
+
+        <!-- Transactions -->
+
+        <div class="card">
+            <div class="icon">📜</div>
+            <h3>Transactions</h3>
+
+            <form th:action="@{/transactions}" method="get">
+                <button class="btn">View History</button>
+				</form>
+        </div>
+        
+    </div>
+
+</div>
+
+</body>
+</html>
+```

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<title>Admin Dashboard</title>
+
+<style>
+
+body{
+font-family: Arial;
+margin:0;
+background:#f4f6f9;
+}
+
+.header{
+background:#2c3e50;
+color:white;
+padding:20px;
+text-align:center;
+font-size:24px;
+}
+
+.container{
+padding:30px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:20px;
+margin-bottom:30px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.card h3{
+color:#555;
+}
+
+.card h1{
+color:#2c3e50;
+}
+
+.buttons{
+text-align:center;
+margin-bottom:20px;
+}
+
+.buttons button{
+padding:12px 20px;
+margin:10px;
+border:none;
+border-radius:6px;
+background:#3498db;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.buttons button:hover{
+background:#2980b9;
+}
+
+.section{
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+margin-bottom:30px;
+}
+
+table{
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:12px;
+border-bottom:1px solid #ddd;
+text-align:center;
+}
+
+th{
+background:#2c3e50;
+color:white;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Admin Dashboard
+</div>
+
+<div class="container">
+
+<!-- Dashboard Cards -->
+
+<div class="cards">
+
+<div class="card">
+<h3>Total Users</h3>
+<h1 th:text="${totalUsers}">0</h1>
+</div>
+
+<div class="card">
+<h3>Total Transactions</h3>
+<h1 th:text="${totalTransactions}">0</h1>
+</div>
+
+</div>
+
+<!-- Buttons -->
+
+<div class="buttons">
+
+<button onclick="showUsers()">User Management</button>
+
+<button onclick="showTransactions()">Transaction History</button>
+
+<button onclick="location.href='/adminLogin'">Logout</button>
+
+</div>
+
+<!-- Users Table -->
+
+<div class="section" id="usersSection">
+
+<h2>User Management</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Email</th>
+<th>Balance</th>
+</tr>
+
+<tr th:each="u : ${users}">
+<td th:text="${u.id}"></td>
+<td th:text="${u.name}"></td>
+<td th:text="${u.email}"></td>
+<td th:text="${u.balance}"></td>
+</tr>
+
+</table>
+
+</div>
+
+<!-- Transactions Table -->
+
+<div class="section" id="transactionsSection" style="display:none">
+
+<h2>Transaction History</h2>
+
+<table>
+
+<tr>
+<th>ID</th>
+<th>User ID</th>
+<th>Type</th>
+<th>Amount</th>
+<th>Date</th>
+</tr>
+
+<tr th:each="t : ${transactions}">
+<td th:text="${t.id}"></td>
+<td th:text="${t.userId}"></td>
+<td th:text="${t.type}"></td>
+<td th:text="${t.amount}"></td>
+<td th:text="${t.date}"></td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+function showUsers(){
+document.getElementById("usersSection").style.display="block";
+document.getElementById("transactionsSection").style.display="none";
+}
+
+function showTransactions(){
+document.getElementById("usersSection").style.display="none";
+document.getElementById("transactionsSection").style.display="block";
+}
+
+</script>
+
+</body>
+</html>
